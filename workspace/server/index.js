@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
     host : "localhost",
     port : 3306, 
     user : "root", 
-    password : "1234",      //본인 sql 패스워드
+    password : "1023",      //본인 sql 패스워드
     database : "blockchain" //본인이 만들어둔 데이터베이스의 이름
 })
 
