@@ -1,0 +1,142 @@
+div,input,textarea {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0px;
+}
+
+.main-background{
+    width: 100%;
+    height: 500px;
+    background-image: url(../img/layout2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1px;
+    position: relative;
+
+    
+}
+
+.main-title{
+    color: white;
+    font-size: 50px;
+    margin-top: 100px;
+    text-align: center; 
+}
+
+.main-text{
+    color: gainsboro;
+    font-size: 30px;
+    text-align: center;
+}
+
+.buy-button{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 170px;
+    background-color: burlywood;
+    border: none;
+    color: rgb(14, 4, 4);
+    padding: 20px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+}
+
+.buy-button:hover{
+    background-color: aliceblue;
+    color: rgb(133, 35, 35);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.buy-button:active{
+    transform: translateY(4px);
+}
+
+.disabled{
+    position: absolute;
+    left: 47.5%;
+    bottom: 100px;
+    opacity: 0.6;
+    cursor:not-allowed;
+    margin: auto;
+    display: block;
+}
+
+.sub-box{
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #eee;
+    position: relative;
+    top: -30px;
+
+
+}
+
+.sub-title{
+    text-align: center;
+}
+
+.form-background{
+    background-color: gray;
+    padding: 30px;
+}
+
+.form-white{
+    background-color: rgb(250, 248, 248);
+    padding: 30px;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.form-input{
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.w-50{
+    width: 50%;
+    float: left;
+    padding: 10px;
+    
+}
+
+.w-100{
+    width: 100%;
+    padding: 10px;
+}
+
+.yellow-button{
+    width: 100%;
+    padding: 10px;
+    background-color: burlywood;
+    border: none;
+    font-size: 15px;
+    color: white;
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    
+}
+
+.yellow-button:hover{
+    background-color: aliceblue;
+    color: rgb(133, 35, 35);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}

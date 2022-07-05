@@ -1,0 +1,85 @@
+<!-- 
+ index.html - Ethereum Wallet
+ Author : Soto Jang (sotolabedu@gmail.com)
+ Copyright (c) Sunstar Since 2015. All Rights Reserved. See LICENSE file.
+ -->
+
+<!Doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="./js/web3.min.js"></script>
+	<script type="text/javascript" src="./js/ethereumjs-tx-1.3.3.min.js"></script>
+	<script src="https://code.jquery.com/jquery-latest.js "></script>
+
+	<!-- bootsrtap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+	<title>My Ethereum Wallet</title>
+
+	<script>
+		$(document).ready(function () {
+			let DEBUG = 1;
+
+			const web3 = new Web3('https://ropsten.infura.io/v3/3c52917848e945229c0d33d632b10490');
+			let Buffer = ethereumjs.Buffer.Buffer;
+			let version = web3.version;
+
+			if (DEBUG) {
+				console.log('starting...');
+				console.log("Ropsten Ethereum API version : ", version);
+				console.log("web3: ", web3);
+			}
+
+
+			$('#newAccount').on('click', async function () {
+
+				let account = web3.eth.accounts.create();
+
+				if (DEBUG) console.log("privateKey : ", account.privateKey);
+				if (DEBUG) console.log("account : ", account.address);
+
+				$('#fromaddress').val(account.address);
+
+				$('#message').text(" account: " + account.address);
+				alert("Account 생성이 완료 되었습니다..!!!" + account.address);
+
+				// getting the value
+				// let fromaddress = $("#fromaddress").val();
+
+				// setting the value
+				// $("#fromaddress").val( "new value here" );
+
+				// <h5>송신처 <input id="fromaddress" size="45" placeholder=""></input> </h5>
+				// <h5>수신처 <input id="toaddress" size="45" value="0x09BCeaC0A761E13f4e4F1461F0fD43dA25791588" placeholder=""></input> </h5>
+			})
+		})
+	</script>
+</head>
+
+<body>
+	<br>
+	<br>
+	<div class="container " role="main">
+		<h2><strong> 나의 이더리움 전자지갑 </strong></h2>
+		<div id="tablePlace"></div>
+		<button id="newAccount">계정생성</button>
+	</div>
+	<br>
+	<br>
+	<div class="container " role="main">
+		<h4><strong> Message </strong></h4>
+		<div id="message"></div>
+	</div>
+	<hr>
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white"><b>copyright ⓒ Sunstar, Since 2015 . All Rights Reserved. </b></p>
+		</div>
+	</footer>
+</body>
+
+</html>

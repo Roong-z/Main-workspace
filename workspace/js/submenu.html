@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="kor">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 부트스트랩 css 사용 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- 내가 만든 css 연결 -->
+    <link href="/css/main.css" rel="stylesheet">
+    <!-- 제이쿼리는 항상 헤드 부분에 넣기 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Nav bar</title>
+
+
+  </head>
+
+  <body>
+
+
+    <!-- 로그인 알림창 div  -->
+    <div class="black-bg">
+        <div class="white-bg">
+          <h4>로그인하세요</h4>
+          <form action="success.html">
+            <div class="my-3">
+              <input type="email" class="form-control" id="email">
+             </div>
+             <div class="my-3">
+              <input type="password" class="form-control" id="pw">
+             </div>
+             <button type="submit" class="btn btn-primary" id="send">전송</button>
+             <button type="button" class="btn btn-danger" id="close">닫기</button>
+          </form> 
+        </div>
+    </div>
+
+
+    <!-- nav바 부트스트랩에서 가져옴 -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <span class="navbar-brand">Navbar</span>
+          <span class="badge bg-dark">Dark 🔄</span>
+          <button class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+    </nav>
+
+    <!-- nav바에 연동되는 서브메뉴 리스트(부트스트랩) -->
+      <ul class="list-group show">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+      </ul>
+
+      <!-- 로그인 화면 -->
+      <div class="main-bg">
+        <h4>Main Event</h4>
+        <button id= "login" class="btn btn-dark">로그인</button>
+      </div>
+      
+      <!--setTimeout  -->
+      <div class="alert alert-danger">
+        <span id="num">5</span>초이내 구매시 사은품 증정!
+      </div>
+      
+      <!-- 캐러셀(이미지슬라이드) -->
+    <div style="overflow: hidden">
+      <div class="slide-container">
+        <div class="slide-box">
+          <img src="/img/car1.png">
+        </div>
+        <div class="slide-box">
+          <img src="/img/car2.png">
+        </div>
+        <div class="slide-box">
+          <img src="/img/car3.png">
+        </div>
+      </div>
+    </div>
+
+      <!-- 캐러셀 버튼 -->
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="next">다음</button>
+    <button class="previous">이전</button>
+
+      <!-- 스크립트 시작 -->
+    <script>
+      // 캐러셀 버튼 누르면 다음그림으로 이동  
+      $('.slide-1').on('click',function(){
+        $('.slide-container').css('transform','translateX(0vw)');
+      })
+
+      $('.slide-2').on('click',function(){
+        $('.slide-container').css('transform','translateX(-100vw)');
+      })
+
+      $('.slide-3').on('click',function(){
+        $('.slide-container').css('transform','translateX(-200vw)');
+      })
+
+
+      //다음버튼을 누르면 지금보이는 사진이 1이면 2번 그림 보여줘
+      let 지금사진 = 1;
+
+      $('.next').on('click',function(){
+        if (지금사진 == 1){
+          $('.slide-container').css('transform','translateX(-100vw)');
+          지금사진 += 1;
+        }else if (지금사진 == 2){
+          $('.slide-container').css('transform','translateX(-200vw)');
+        }
+      });
+      
+      // 사진이 추가되어도 바로 적용가능한 확장성 있는 코드(근데 계속 옆으로 간다..)
+      // $('.next').on('click', function(){
+      // $('.slide-container').css('transform', 'translateX(-' + 지금사진 + '00vw)');
+      // 지금사진 += 1;
+      // })
+
+      $('.previous').on('click',function(){
+        if (지금사진 == 2){
+          $('.slide-container').css('transform','translateX(-100vw)');
+          지금사진 -= 1;
+        }else if (지금사진 == 1){
+          $('.slide-container').css('transform','translateX(0vw)');
+        }
+      });
+
+    </script>
+
+
+    <script>
+    // 전송버튼 누를때 공백검사+비밀번호 6자 이하일때 알림창 생성
+        $('form').on('submit', function(e){
+          var 비번 = document.getElementById('pw').value;
+          if(document.getElementById('email').value == ''){
+              alert('아이디를 입력하세요.');
+          }
+          if(document.getElementById('pw').value == ''){
+              alert('비밀번호를 입력하세요.');
+          } 
+          if ( /[A-Z]/.test(비번) == false ){
+          alert('대문자가 없습니다.')
+          e.preventDefault();
+          }
+          if(document.getElementById('pw').value.length <= 6){
+              alert('비밀번호를 6자 이상 입력하세요.')
+          e.preventDefault();
+          }
+        });
+
+    // 이메일 정규식 검사 + 비밀번호 대문자 검사
+    /*if (/\S+@\S+\.\S+/.test(입력한값)){
+              alert('이메일형식아님')
+          }*/
+      
+
+    // 로그인 버튼 누르면 알림창 나오기+닫기
+        $('#login').on('click',function(){
+        $('.black-bg').fadeIn(300);
+        });
+        $('#close').on('click',function(){
+        $(".black-bg").fadeOut(300);
+        });
+
+    // nav바 눌렀을때 서브메뉴 출력+닫기
+        $(".navbar-toggler").on('click',function(){
+        $(".list-group").toggle('.show');
+        });
+
+    //badge 클릭횟수가 홀수면 내부 글자를 light로 변경
+    //badge 클릭횟수가 짝수면 내부 글자를 dark로 변경 
+        let count = 0;
+
+        $('.badge').on('click', function(){
+          count++;
+          if(count % 2 == 1){
+            $('.badge').html('Light🔄')
+          }else{
+            $('.badge').html('Dark🔄')
+          }
+        });
+
+
+      //변수의 선언, 할당 , 범위
+      // var = 변수 재선언 가능 / 변수 재할당 가능 / 범위 function
+      // let = 변수 재선언 불가능 / 변수 재할당 가능 / 범위 {}
+      // const = 변수 재선언 불가능 / 변수 재할당 불가능 / 범위 {}
+
+
+      /*let 이름;
+      --------선언*/
+
+      /*let 이름 = 'kim';
+      --------할당*/
+
+      /*function 함수(){
+        let 이름 = 'kim';
+        console.log(이름);
+      }-------범위*/
+      //함수안에서 변수 만들면 사용가능 범위는 함수 내부(반대는 가능)
+
+    
+      //setTimout(이 시간 뒤에 ~ 실행해주세요)
+      /*setTimeout(함수, 1000)
+
+      function 함수(){
+        $('.alert').hide();
+      }*/
+
+
+      //setInterval(반복적으로 코드실행 ex.1초마다 ~ 실행해주세요)
+      /*setInterval(function(){
+        console.log('안녕')
+      },1000)*/
+
+
+      //1초씩 감소하는 타이머 문자가 5 4 3 2 1 0 으로 출력되게
+      let count2 = 5;
+
+      setInterval(function(){
+        count2 -= 1;
+        if (count2 >= 0){
+          document.querySelector('#num').innerHTML = count2;
+        }
+      }, 1000);
+      
+      setTimeout(function(){
+        $('.alert').hide();
+      },6000);
+
+    </script>
+
+
+
+    <!-- 부트스트랩 js 사용-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+.profile{
+    margin: auto;
+    display: block;
+    width:50px; 
+    float: left;
+    text-align: center;
+}
+.blog-name{
+    float: left;
+}
+.container{
+    width: 800px;
+}
+.blog-content{
+    width: 80%;
+    height: 200px;
+    float: left;
+}
+.blog-img{
+    width: 20%;
+    height: 200px;
+    float: left;
+
+}
+
+.blog-im{
+    clear: both;
+}
+
+.text{
+    opacity: 0.5;
+}
+
+.navbar a {
+    display : inline-block;
+    font-size : 16px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar li {
+    display : inline-block;
+    width: 60px;
+    text-align: center;
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px;
+}

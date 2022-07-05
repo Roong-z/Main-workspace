@@ -1,0 +1,66 @@
+.cart-background {
+    width: 100%;
+    background-color: rgb(98, 214, 214);
+    padding: 50px;
+}
+
+.cart-table{
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+}
+
+td,th{
+    border: 1px solid black;
+}
+
+.cart-table td,cart-table th{
+    padding: 15px;
+    border: 1px solid #c2d3de;
+}
+.cell-long {
+    width: 700px;
+}
+
+.cart-table th:nth-child(2) {
+    
+}
+
+.btn{
+    position: relative;
+    left: 300px;
+    width: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(189, 133, 61);
+    border: none;
+    border-radius: 10px;
+    color: aliceblue;
+    cursor: pointer;   
+}
+
+.btn:hover {
+    background-color: chocolate;
+}
+
+.btn:focus {
+    background-color: rgb(90, 80, 80);
+}
+
+.btn:active {
+    background-color: blue;
+    border: 2px solid black;
+}
+
+.input-test{
+    top: 10px;
+    position: relative;
+    left: 300px;
+    font-size: 20px;
+}
+
+.input-test:focus {
+    border-bottom: 2px solid black;
+}

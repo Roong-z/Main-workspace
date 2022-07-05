@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css"
+</head>
+<body>
+
+<div class="alert-box" id="alert">
+    <p id="roong"> Alert 박스</p>
+    <button id="close"> X </button>
+    </div>
+    
+    <button id="number1">버튼1</button>
+    <button id="number2">버튼2</button>
+    
+
+    <script>
+     document.getElementById('number1').addEventListener('click',function(){
+       document.getElementById('alert').style.display = 'blcok'; 
+    });
+    document.getElementById('close').addEventListener('click',function(){
+       document.getElementById('alert').style.display = 'none'; 
+    });
+    
+        
+        
+    </script>
+</body>
+    
+</html>
+    

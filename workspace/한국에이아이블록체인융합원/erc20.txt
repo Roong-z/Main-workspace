@@ -1,0 +1,90 @@
+pragma solidity ^0.4.4;
+
+
+/*erc20 interface*/
+contract Token {
+
+
+    function totalSupply() public view returns (uint256 supply) {}
+
+
+    function balanceOf(address _owner) public view returns (uint256 balance) {}
+
+
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+
+
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+
+
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+
+
+    function allowance(address _owner, address _spender) public view returns (uint256 remaining) {}
+
+    event Transfer(address indexed _from, address indexed _to, uint256 _value);
+    event Approval(address indexed _owner, address indexed _spender, uint256 _value);
+
+}
+
+contract StandardToken is Token {
+
+    function transfer(address _to, uint256 _value) public returns (bool success) {
+
+        if (balances[msg.sender] >= _value && _value > 0) {
+            balances[msg.sender] -= _value;
+            balances[_to] += _value;
+            Transfer(msg.sender, _to, _value); //(이벤트)블록체인에 브로드캐스트
+            return true;
+        } else { return false; }
+    }
+
+
+    function balanceOf(address _owner) public view returns (uint256 balance) {
+        return balances[_owner];
+    }
+
+
+
+    mapping (address => uint256) balances;
+
+
+   uint256 public totalSupply;
+}
+
+contract TestToken is StandardToken { 
+
+    string public name;                   // Token 이름
+    uint8 public decimals;                // ETH의 wei,Gwei와 같이 해당 코인의 최소 단위를 설정
+    string public symbol;               
+    string public version = 'H1.0'; 
+    uint256 public Token_OneEthCanBuy;    // 1ETH로 살 수 있는 토큰 양
+    uint256 public totalEthInWei;         // 토큰을 구매하면서 쌓이는 총 ETH 양(WEI 단위)
+    address public fundManager;           // 토큰 최초 발행자
+
+    // This is a constructor function 
+    // which means the following function name has to match the contract name declared above
+    constructor () public {
+        balances[msg.sender] = 1000000000000000000000;
+        totalSupply = 1000000000000000000000;
+        name = "TK";
+        decimals = 18;
+        symbol = "TTN"; 
+        Token_OneEthCanBuy = 10;   
+        fundManager = msg.sender;  
+    }
+
+    function() external payable{
+        totalEthInWei = totalEthInWei + msg.value; 
+        uint256 amount = msg.value * Token_OneEthCanBuy; //구매자가 사려하고 하는 토큰 양
+        require(balances[fundManager] >= amount);
+
+        balances[fundManager] = balances[fundManager] - amount; //토큰 발행자의 토큰 차감
+        balances[msg.sender] = balances[msg.sender] + amount; //토큰 구매자에게 토큰 전달
+
+        Transfer(fundManager, msg.sender, amount); // 블록체인에 브로드캐스트
+
+
+        fundManager.transfer(msg.value);                               
+    }
+}
