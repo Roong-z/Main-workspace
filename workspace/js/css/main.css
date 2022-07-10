@@ -64,3 +64,7 @@
     font-size: 30px;
     transition : all 1s;
 }
+
+.navbar-brand {
+    font-size: 20px;
+}
