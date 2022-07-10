@@ -46,6 +46,18 @@
         </div>
     </nav>
 
+
+    <!-- 스크롤 내릴때 script -->
+    <script>
+      $(window).on('scroll',function(){
+        if(window.scrollY > 100){
+          $('.navbar-brand').css('font-size','20px');
+        }else{
+          $('.navbar-brand').css('font-size','30px');
+        }
+      });
+    </script>
+
     <!-- nav바에 연동되는 서브메뉴 리스트(부트스트랩) -->
       <ul class="list-group show">
         <li class="list-group-item">An item</li>
@@ -61,6 +73,26 @@
         <button id= "login" class="btn btn-dark">로그인</button>
       </div>
       
+      <!-- 회원약관 다읽으면 alret 창 -->
+      <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Quae voluptas voluptatum minus praesentium fugit debitis at, 
+        laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, 
+        eligendi quae consectetur praesentium exercitationem.</div>
+
+      <!-- 약관 스크롤 내릴때 script -->
+      <script>
+        //div의 스크롤바 내린 양 + (화면에 보이는 div의 높이)== div의 실제높이
+        $('.lorem').on('scroll',function(){
+          let 스크롤양 = document.querySelector('.lorem').scrollTop;
+          let 실제높이 = document.querySelector('.lorem').scrollHeight;
+          let 높이 = document.querySelector('.lorem').clientHeight;
+
+          if(스크롤양 + 높이 > 실제높이 - 10){
+            alert('확인 완료')
+          }
+        })
+      </script>
+        
       <!--setTimeout  -->
       <div class="alert alert-danger">
         <span id="num">5</span>초이내 구매시 사은품 증정!

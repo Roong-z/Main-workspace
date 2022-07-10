@@ -48,3 +48,19 @@
 .slide-box img {
     width: 100%;
 }
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+}
+
+.list-group {
+    position: fixed;
+    width: 100%;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    transition : all 1s;
+}
