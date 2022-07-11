@@ -93,10 +93,6 @@
         })
       </script>
         
-
-
-
-
       <!--setTimeout  -->
       <div class="alert alert-danger">
         <span id="num">5</span>초이내 구매시 사은품 증정!
@@ -197,11 +193,22 @@
       
 
     // 로그인 버튼 누르면 알림창 나오기+닫기
+
+          // e.target; 유저가 실제로 누른거
+          // e.currentTarget; 이벤트리스너 달린곳 this; 라고도 함
+          // e.preventDefault(); 이벤트 기본동작 막아줌
+          // e.stopPropagation(); 내상위요소로 이벤트 버블링 막아줌
+        
         $('#login').on('click',function(){
         $('.black-bg').fadeIn(300);
         });
         $('#close').on('click',function(){
         $(".black-bg").fadeOut(300);
+        });
+        $('.black-bg').on('click',function(e){
+        // if ( e.target == document.querySelector('.black-bg') )
+        if($(e.target).is($('.black-bg'))){
+        $(".black-bg").fadeOut(300);}
         });
 
     // nav바 눌렀을때 서브메뉴 출력+닫기

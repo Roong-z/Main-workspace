@@ -22,12 +22,14 @@
     z-index : 5;
     padding: 30px;
     display: none;
+
 }
 
 .white-bg {
     background: white;
     border-radius: 5px;
     padding: 30px;
+
 } 
 
 .main-bg {
