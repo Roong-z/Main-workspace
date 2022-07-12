@@ -54,3 +54,6 @@ $('.list').click(function(e){
 //     $(".tab-content").removeClass('show');
 //     $(".tab-content").eq(2).addClass('show');
 // });
+
+
+

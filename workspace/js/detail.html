@@ -53,6 +53,44 @@
         }
       </style>
 
+    <!-- array와 Object 자료형 -->
+      <div class="container mt-3">
+        <div class="card p-3">
+          <span class="car-title">상품명</span>
+          <span class="car-price">가격</span>
+        </div>
+      </div>
+
+      <script>
+        //  array 자료형
+        // [자료1, 자료2, 자료3] = 표처럼 자료를 정리하는 느낌
+        // array자료형 안에서 원하는 자료를 꺼내고 싶을때 [] 인덱싱 해서 가져오기(0부터 시작)
+        // 자료간 순서 존재 sort() 함수 사용시 정렬되서 출력 -> car.sort();
+        // 중간에 자르기도 가능 -> car.slice(1,3);
+        let car = ['소나타', 50000, 'white'];
+        // 수정하고 싶을때
+        car[0] = '아반떼';
+        console.log(car[0]);
+
+        // object 자료형
+        // 장점 : 이름붙여서 저장가능
+        // 순서개념 없음
+        // name,price 부분을 [key부분]
+        // '소나타',50000 부분을 [value 부분]
+        let car2 ={name : '소나타', price : 50000, color : 'black'}
+        // console.log(car2['color']) 이거랑 같음
+        car2.color = 'green'
+        document.querySelector('.car-title').innerHTML = car2.name;
+        document.querySelector('.car-price').innerHTML = car2.price;
+
+      </script>
+
+
+
+
+
+
+    <!-- 탭 기능 -->
     <div class="container mt-5">
         <ul class="list">
           <li class="tab-button" data-id="0">Products</li>
