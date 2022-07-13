@@ -77,11 +77,12 @@
         // 순서개념 없음
         // name,price 부분을 [key부분]
         // '소나타',50000 부분을 [value 부분]
-        let car2 ={name : '소나타', price : 50000, color : 'black'}
+        let car2 ={name : '소나타', price : [50000, 3000, 4000] , color : 'black'}
         // console.log(car2['color']) 이거랑 같음
         car2.color = 'green'
-        document.querySelector('.car-title').innerHTML = car2.name;
-        document.querySelector('.car-price').innerHTML = car2.price;
+        document.querySelector('.car-title').innerHTML = car2.name
+        document.querySelector('.car-price').innerHTML = car2.price[0]
+        
 
       </script>
 
