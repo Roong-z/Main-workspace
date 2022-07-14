@@ -50,3 +50,7 @@
 .slide-box img{
     width: 100%;
 }
+
+.form-hide {
+    display: none;
+}
