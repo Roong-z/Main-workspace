@@ -13,6 +13,8 @@ function App() {
   let [첫번째숫자, 첫번째숫자증가] = useState(0);
   let [두번째숫자, 두번째숫자증가] = useState(0);
   let [세번째숫자, 세번째숫자증가] = useState(0);
+  let [modal, setModal] = useState(false);
+
 
   return (
     <div className="App">
@@ -27,7 +29,7 @@ function App() {
             제목정렬.sort();
             제목변경(제목정렬)
           }}>가나다순 정렬</button>
-          <h4>{ 글제목[0] } <span onClick={ () => { 첫번째숫자증가(첫번째숫자+1) }}>👍</span> { 첫번째숫자 } </h4>
+          <h4 onClick={() => { setModal(!modal) }}>{ 글제목[0] } <span onClick={ () => { 첫번째숫자증가(첫번째숫자+1) }}>👍</span> { 첫번째숫자 } </h4>
         <Date/>
 
         {/* 카피해서 해야지 확장성 업 */}
@@ -48,7 +50,9 @@ function App() {
         <Date/>
         </div>
         
-        <Modal/>
+        {
+          modal == true ? <Modal/> : null
+        }
 
     </div>
   );
