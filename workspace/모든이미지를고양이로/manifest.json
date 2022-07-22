@@ -1,0 +1,11 @@
+{
+    "manifest_version" : 3,
+    "name" : "image to pepe",
+    "version" : "0.1",
+    "content_scripts" : [
+        {
+            "matches" : ["<all_urls>"],
+            "js" : ["index.js"]
+        }
+    ]
+}

@@ -28,7 +28,7 @@ function App() {
             제목변경(제목정렬)
           }}>가나다순 정렬</button>
           <h4>{ 글제목[0] } <span onClick={ () => { 첫번째숫자증가(첫번째숫자+1) }}>👍</span> { 첫번째숫자 } </h4>
-        <p>7월 18일 발행</p>
+        <Date/>
 
         {/* 카피해서 해야지 확장성 업 */}
         {/* [...] <<-- 괄호 벗겨주세요 */}
@@ -41,20 +41,42 @@ function App() {
         </div>
         <div className = "list">
           <h4>{ 글제목[1] } <span onClick={ () => { 두번째숫자증가(두번째숫자+1) }}>👍</span> { 두번째숫자 } </h4>
-        <p>7월 18일 발행</p>        
+        <Date/>        
         </div>
         <div className = "list">
           <h4>{ 글제목[2] } <span onClick={ () => { 세번째숫자증가(세번째숫자+1) }}>👍</span> { 세번째숫자 } </h4>
-        <p>7월 18일 발행</p>
+        <Date/>
         </div>
+        
+        <Modal/>
 
-      <div className="modal">
-        <h4>제목</h4>
-        <p>날짜</p>
-        <p>상세내용</p>
-      </div>
     </div>
   );
 }
+
+
+// 다른 function 에서 데이터 가져올수 없음..
+// function Title(){
+//   return(
+//     <h4>{ 글제목[1] } <span onClick={ () => { 두번째숫자증가(두번째숫자+1) }}>👍</span> { 두번째숫자 } </h4>
+//   )
+// }
+
+function Date(){
+  return (
+    <p>7월 18일 발행</p>
+  )
+}
+
+function Modal(){
+  return (
+    <div className="modal">
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+   </div>
+  )
+}
+
 
 export default App;
