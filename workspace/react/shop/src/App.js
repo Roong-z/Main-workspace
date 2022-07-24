@@ -1,9 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import { Button,Navbar,Container,Nav,Form,NavDropdown } from 'react-bootstrap';
+import { useState } from 'react';
+import data from './data.js';
+
 
 
 function App() {
+
+  let [ goods, setGoods ] = useState(data);
+
   return (
     <div className="App">
 <Navbar bg="light" expand="lg">
@@ -45,29 +51,20 @@ function App() {
       </Container>
     </Navbar>
 
-    <div className='main-bg'></div>
+  <div className='main-bg'></div>
 
   <div className="container">
     <div className="row">
-    <div className="col-md-4">
-      <img className='snack' src={process.env.PUBLIC_URL + '/img/chu.jpg'}/>
-      <h4>상품명</h4>
-      <p>상품설명</p>
-    </div>
 
-    <div className="col-md-4">
-      <img className='snack' src={process.env.PUBLIC_URL + "img/temptations.jpg"}/>
-      <h4>상품명</h4>
-      <p>상품설명</p>
-    </div>
+  {
+    goods.map(function(a, i){
+      return(
+        <Product goods={goods[i]} i={i}/>
+      )
+    })
+  }
 
-    <div className="col-md-4">
-      <img className='snack' src={process.env.PUBLIC_URL + "img/goodchu.jpg"}/>
-      <h4>상품명</h4>
-      <p>상품설명</p>
-    </div>
-
-    </div>
+  </div>
   </div> 
 
 </div>
@@ -75,5 +72,16 @@ function App() {
 }
 
 
+// 컴포넌트
+function Product(props){
+  return (
+    <div className="col-md-4">
+      <img className='snack' src={process.env.PUBLIC_URL + '/img/'+ (props.i+1) +'.jpg'}/>
+      <h4>{ props.goods.title }</h4>
+      <p>{ props.goods.content }</p>
+      <p>{ props.goods.price }</p>
+    </div>
+  )
+}
 
 export default App;
