@@ -12,7 +12,8 @@ function App() {
   let logo = 'ReactBlog';
   let [좋아요, 좋아요증가] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
-
+  let [title, setTitle] = useState(0);
+  let [입력값, 입력값변경] = useState('');
 
   return (
     <div className="App">
@@ -35,53 +36,47 @@ function App() {
             제목변경(copy);
           }}>제목변경!</button>
 
-        {/* <div className = "list">
-          <h4 onClick={() => { setModal(!modal) }}>{ 글제목[0] } 
-          <span onClick={ () => { 첫번째숫자증가(첫번째숫자+1) }}>👍</span> { 첫번째숫자 } 
-          </h4>
-          <Date/>
-        </div>
-
-        <div className = "list">
-          <h4>{ 글제목[1] } 
-          <span onClick={ () => { 두번째숫자증가(두번째숫자+1) }}>👍</span> { 두번째숫자 } 
-          </h4>
-          <Date/>
-        </div>
-
-        <div className = "list">
-          <h4>{ 글제목[2] } 
-          <span onClick={ () => { 세번째숫자증가(세번째숫자+1) }}>👍</span> { 세번째숫자 } 
-          </h4>
-          <Date/>
-        </div> */}
-        
         {
           글제목.map(function(a, i){
             return (
             <div className = "list" key={i}>
-              <h4 onClick={() => { setModal(!modal) }}>{ 글제목[i] } 
-              <span onClick={ () => {
+              <h4 onClick={() => { 
+                setModal(!modal); setTitle(i) }}>{ 글제목[i] } 
+              <span onClick={ (e) => { e.stopPropagation();
                 let copy = [...좋아요];
                 copy[i] = copy[i] + 1;
                 좋아요증가(copy)
               }}>👍</span> { 좋아요[i] }
               </h4>
               <Date/>
+              <button onClick={()=>{
+                let copy = [...글제목];
+                copy.splice(i, 1);
+                제목변경(copy)
+              }}>삭제</button>
             </div>
             )
           })
         }
 
+        <input onChange={(e)=>{ 
+           입력값변경(e.target.value);
+           }}
+           type="text"/>
 
+        <input onClick={()=>{
+          let copy = [...글제목];
+          copy.unshift(입력값);
+          제목변경(copy)
+        }} type="submit"/>
+        
         {
-          modal == true ? <Modal/> : null
+          modal == true ? <Modal title={title} 글제목={글제목}/> : null
         }
 
     </div>
   );
 }
-
 
 // 다른 function 에서 데이터 가져올수 없음..
 // function Title(){
@@ -96,12 +91,13 @@ function Date(){
   )
 }
 
-function Modal(){
+function Modal(props){
   return (
     <div className="modal">
-      <h4>제목</h4>
+      <h4>{ props.글제목[props.title] }</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button>글수정</button>
    </div>
   )
 }
