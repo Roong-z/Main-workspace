@@ -8,7 +8,7 @@ function App() {
     <div className="App">
 <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#">츄룽지Shop</Navbar.Brand>
+        <Navbar.Brand href="#">BonitoRoong</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -44,8 +44,34 @@ function App() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+
+    <div className='main-bg'></div>
+
+  <div className="container">
+    <div className="row">
+    <div className="col-md-4">
+      <img className='snack' src={process.env.PUBLIC_URL + '/img/chu.jpg'}/>
+      <h4>상품명</h4>
+      <p>상품설명</p>
     </div>
-  );
+
+    <div className="col-md-4">
+      <img className='snack' src={process.env.PUBLIC_URL + "img/temptations.jpg"}/>
+      <h4>상품명</h4>
+      <p>상품설명</p>
+    </div>
+
+    <div className="col-md-4">
+      <img className='snack' src={process.env.PUBLIC_URL + "img/goodchu.jpg"}/>
+      <h4>상품명</h4>
+      <p>상품설명</p>
+    </div>
+
+    </div>
+  </div> 
+
+</div>
+);
 }
 
 
