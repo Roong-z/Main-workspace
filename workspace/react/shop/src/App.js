@@ -3,6 +3,8 @@ import './App.css';
 import { Button,Navbar,Container,Nav,Form,NavDropdown } from 'react-bootstrap';
 import { useState } from 'react';
 import data from './data.js';
+import { Routes, Route, Link } from 'react-router-dom'
+
 
 
 
@@ -12,7 +14,40 @@ function App() {
 
   return (
     <div className="App">
-<Navbar bg="light" expand="lg">
+      <Navbbar></Navbbar>
+    <div className='main-bg'></div>
+    <div className="container">
+    <div className="row">
+
+  {
+    goods.map(function(a, i){
+      return(
+        <Product goods={goods[i]} i={i}/>
+      )
+    })
+  }
+  </div>
+  </div> 
+</div>
+);
+}
+
+
+// 컴포넌트
+function Product(props){
+  return (
+    <div className="col-md-4">
+      <img className='snack' src={process.env.PUBLIC_URL + '/img/'+ (props.i+1) +'.jpg'}/>
+      <h4>{ props.goods.title }</h4>
+      <p>{ props.goods.content }</p>
+      <p>{ props.goods.price }</p>
+    </div>
+  )
+}
+
+function Navbbar(props){
+  return (
+    <Navbar bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand href="#">BonitoRoong</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -50,37 +85,6 @@ function App() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-
-  <div className='main-bg'></div>
-
-  <div className="container">
-    <div className="row">
-
-  {
-    goods.map(function(a, i){
-      return(
-        <Product goods={goods[i]} i={i}/>
-      )
-    })
-  }
-
-  </div>
-  </div> 
-
-</div>
-);
-}
-
-
-// 컴포넌트
-function Product(props){
-  return (
-    <div className="col-md-4">
-      <img className='snack' src={process.env.PUBLIC_URL + '/img/'+ (props.i+1) +'.jpg'}/>
-      <h4>{ props.goods.title }</h4>
-      <p>{ props.goods.content }</p>
-      <p>{ props.goods.price }</p>
-    </div>
   )
 }
 
