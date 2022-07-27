@@ -3,37 +3,73 @@ import './App.css';
 import { Button,Navbar,Container,Nav,Form,NavDropdown } from 'react-bootstrap';
 import { useState } from 'react';
 import data from './data.js';
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 
 
 
 
 function App() {
 
-  let [ goods, setGoods ] = useState(data);
-
   return (
     <div className="App">
-      <Navbbar></Navbbar>
-    <div className='main-bg'></div>
-    <div className="container">
-    <div className="row">
-
-  {
-    goods.map(function(a, i){
-      return(
-        <Product goods={goods[i]} i={i}/>
-      )
-    })
-  }
-  </div>
-  </div> 
-</div>
+    <Routes>
+      <Route path='/' element={ <Mainpage />}/>
+      <Route path='/detail' element={<div>상페</div>} />
+      <Route />
+      <Route />
+    </Routes>
+    </div>
 );
 }
 
 
 // 컴포넌트
+
+
+// 메인페이지
+function Mainpage(){
+  let [ goods, setGoods ] = useState(data);
+
+  return(
+    <>
+    <Navbbar></Navbbar>
+    <div className='main-bg'></div>
+      <div className="container">
+        <div className="row">
+      {
+        goods.map(function(a, i){
+        return(
+        <Product goods={goods[i]} i={i}/>
+        )})
+      }
+      </div>
+    </div>
+    </>
+  )
+}
+
+// 상세페이지
+function Detail_page1(){
+  return(
+  <div className="container">
+    <div className="row">
+      <div className="col-md-6">
+        <img src="http://localhost:3000/img/1.jpg" width="100%" />
+      </div>
+    <div className="col-md-6">
+      <h4 className="pt-5">챠오츄르</h4>
+      <p>마성의 고양이 간식</p>
+      <p>5000원</p>
+      <button className="btn btn-danger">주문하기</button> 
+    </div>
+  </div>
+</div> 
+  )
+}
+
+
+
+// 상품
 function Product(props){
   return (
     <div className="col-md-4">
@@ -45,11 +81,13 @@ function Product(props){
   )
 }
 
+// nav바
 function Navbbar(props){
+  const navigate = useNavigate();
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#">BonitoRoong</Navbar.Brand>
+        <Navbar.Brand onClick={()=>{ navigate('/') }}>BonitoRoong</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -58,7 +96,7 @@ function Navbbar(props){
             navbarScroll
           >
             <Nav.Link href="#action1">메인</Nav.Link>
-            <Nav.Link href="#action2">간식</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('/detail') }}>간식</Nav.Link>
             <NavDropdown title="장난감" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">낚싯대 장난감</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
