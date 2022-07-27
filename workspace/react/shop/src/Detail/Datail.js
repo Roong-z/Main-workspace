@@ -1,82 +1,28 @@
-import './App.css';
 import { Button,Navbar,Container,Nav,Form,NavDropdown } from 'react-bootstrap';
-import { useState } from 'react';
-import data from './data.js';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
-import Detail from './Detail/Datail';
 
 
-
-
-function App() {
-  let [ goods, setGoods ] = useState(data);
-
-  return (
-    <div className="App">
-    <Routes>
-      <Route path='/' element={ <Mainpage />} />
-      <Route path='/detail' element={ <Detail goods={goods}/>} />
-      <Route path='*' element={<div>Error</div>} />
-      <Route path='about' element={ <About/> } >
-        <Route path='member' element={<div> 멤버 </div>} />
-        <Route path='location' element={<div> location </div>} />
-      </Route>
-    </Routes>
-    </div>
-);
-}
-
-
-// 컴포넌트
-
-
-// 메인페이지
-function Mainpage(){
-  let [ goods, setGoods ] = useState(data);
-
+function Detail(props){
   return(
-    <>
-    <Navbbar></Navbbar>
-    <div className='main-bg'></div>
-      <div className="container">
-        <div className="row">
-      {
-        goods.map(function(a, i){
-        return(
-        <Product goods={goods[i]} i={i}/>
-        )})
-      }
+<>
+  <Navbbar></Navbbar>
+  <div className="container">
+    <div className="row">
+      <div className="col-md-6">
+        <img src="http://localhost:3000/img/1.jpg" width="100%" />
       </div>
+    <div className="col-md-6">
+      <h4 className="pt-5">{props.goods[0].title}</h4>
+      <p>{props.goods[0].content}</p>
+      <p>{props.goods[0].price}</p>
+      <button className="btn btn-danger">주문하기</button> 
     </div>
-    </>
+  </div>
+</div>
+</> 
   )
 }
 
-// About 페이지
-function About(){
-  return (
-    <div>
-      <h4>회사정보</h4>
-      <Outlet></Outlet>
-      <Outlet></Outlet>
-    </div>
-  )
-}
-
-
-// 상품
-function Product(props){
-  return (
-    <div className="col-md-4">
-      <img className='snack' src={process.env.PUBLIC_URL + '/img/'+ (props.i+1) +'.jpg'}/>
-      <h4>{ props.goods.title }</h4>
-      <p>{ props.goods.content }</p>
-      <p>{ props.goods.price }</p>
-    </div>
-  )
-}
-
-// nav바
 function Navbbar(props){
   const navigate = useNavigate();
   return (
@@ -121,4 +67,4 @@ function Navbbar(props){
   )
 }
 
-export default App;
+export default Detail;
