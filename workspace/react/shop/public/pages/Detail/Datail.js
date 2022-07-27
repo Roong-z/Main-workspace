@@ -1,9 +1,8 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
-
-
-
-function Detail_page1(){
+function Detail(){
     return(
     <div className="container">
       <div className="row">
@@ -21,4 +20,4 @@ function Detail_page1(){
     )
   }
 
-  export default Detail_page1;
+  export default Detail;
