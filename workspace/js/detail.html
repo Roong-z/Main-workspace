@@ -9,7 +9,7 @@
     <link href="/css/main.css" rel="stylesheet">
     <!-- 제이쿼리는 항상 헤드 부분에 넣기 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title>M2 언제오냐</title>
+    <title>디테일페이지</title>
   </head>
 
   <body>
@@ -73,7 +73,7 @@
         let car = ['소나타', 50000, 'white'];
         // 수정하고 싶을때
         car[0] = '아반떼';
-        console.log(car[0]);
+        // console.log(car[0]);
 
         // object 자료형
         // 장점 : 이름붙여서 저장가능
@@ -95,17 +95,39 @@
       <select class="form-select mt-2">
         <option>모자</option>
         <option>셔츠</option>
+        <option>바지</option>
       </select>
       <select class="form-select mt-2 form-hide">
-        <option>95</option>
-        <option>100</option>
+        <option>사이즈1</option>
+        <option>사이즈2</option>
       </select>
     </form>
 
+
+    <div id="test">
+
+    </div>
+
     <script>
+
+
+      const pants = [28,30,32,34];
+      const shirts = [95,100,105,110];
+      // $('#size').html(바지사이즈);
+
       $('.form-select').eq(0).on('input',function(){
         let value = this.value;
         if(value == '셔츠'){
+          $('.form-select').eq(1).html('');
+          shirts.forEach(function(data){
+            $('.form-select').eq(1).append(`<option>${data}</option>`);
+          })
+          $('.form-select').eq(1).removeClass('form-hide');
+        }else if(value == '바지'){
+          $('.form-select').eq(1).html('');
+          pants.forEach(function(data){
+            $('.form-select').eq(1).append(`<option>${data}</option>`);
+          })
           $('.form-select').eq(1).removeClass('form-hide');
         }else{
           $('.form-select').eq(1).addClass('form-hide');
