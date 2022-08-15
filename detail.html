@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="kor">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 부트스트랩 css 사용 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- 내가 만든 css 연결 -->
+    <link href="/css/main.css" rel="stylesheet">
+    <!-- 제이쿼리는 항상 헤드 부분에 넣기 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>M2 언제오냐</title>
+  </head>
+
+  <body>
+
+    <style>
+        ul.list {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          border-bottom: 1px solid #ccc;
+        }
+        ul.list::after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+        .tab-button {
+          display: block;
+          padding: 10px 20px 10px 20px;
+          float: left;
+          margin-right: -1px;
+          margin-bottom: -1px;
+          color: grey;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .orange {
+          border-top: 2px solid orange;
+          border-right: 1px solid #ccc;
+          border-bottom: 1px solid white;
+          border-left: 1px solid #ccc;
+          color: black;
+          margin-top: -2px;
+        }
+        .tab-content {
+          display: none;
+          padding: 10px;
+        }
+        .show {
+          display: block;
+        }
+        .form-hide {
+          display: none;
+        }
+      </style>
+
+    <!-- array와 Object 자료형 -->
+      <div class="container mt-3">
+        <div class="card p-3">
+          <span class="car-title">상품명</span>
+          <span class="car-price">가격</span>
+        </div>
+      </div>
+
+      <script>
+        //  array 자료형
+        // [자료1, 자료2, 자료3] = 표처럼 자료를 정리하는 느낌
+        // array자료형 안에서 원하는 자료를 꺼내고 싶을때 [] 인덱싱 해서 가져오기(0부터 시작)
+        // 자료간 순서 존재 sort() 함수 사용시 정렬되서 출력 -> car.sort();
+        // 중간에 자르기도 가능 -> car.slice(1,3);
+        let car = ['소나타', 50000, 'white'];
+        // 수정하고 싶을때
+        car[0] = '아반떼';
+        console.log(car[0]);
+
+        // object 자료형
+        // 장점 : 이름붙여서 저장가능
+        // 순서개념 없음
+        // name,price 부분을 [key부분]
+        // '소나타',50000 부분을 [value 부분]
+        let car2 ={name : '소나타', price : [50000, 3000, 4000] , color : 'black'}
+        // console.log(car2['color']) 이거랑 같음
+        car2.color = 'green'
+        document.querySelector('.car-title').innerHTML = car2.name
+        document.querySelector('.car-price').innerHTML = car2.price[0]
+        
+
+      </script>
+
+    <!-- select 문법 -->
+    <form class="container my-5 form-group">
+      <p>상품선택</p>
+      <select class="form-select mt-2">
+        <option>모자</option>
+        <option>셔츠</option>
+      </select>
+      <select class="form-select mt-2 form-hide">
+        <option>95</option>
+        <option>100</option>
+      </select>
+    </form>
+
+    <script>
+      $('.form-select').eq(0).on('input',function(){
+        let value = this.value;
+        if(value == '셔츠'){
+          $('.form-select').eq(1).removeClass('form-hide');
+        }else{
+          $('.form-select').eq(1).addClass('form-hide');
+        }
+      })
+
+      // script코드는 처음에 페이지를 로드할때 1번만 실행되기때문에 이벤트 리스터 써야함!!
+      // let value = $('.form-select').eq(0).val();
+      // if(value == '셔츠'){
+      //   $('.form-select').eq(1).removeClass('form-hide');
+      // }
+    </script>
+
+
+
+    <!-- 탭 기능 -->
+    <div class="container mt-5">
+        <ul class="list">
+          <li class="tab-button" data-id="0">Products</li>
+          <li class="tab-button orange" data-id="1">Information</li>
+          <li class="tab-button" data-id="2">Shipping</li>
+        </ul>
+        <div class="tab-content">
+          <p>상품설명입니다. Product</p>
+        </div>
+        <div class="tab-content show">
+          <p>스펙설명입니다. Information</p>
+        </div>
+        <div class="tab-content">
+          <p>배송정보입니다. Shipping</p>
+        </div>
+      </div> 
+
+
+
+      <script src="tab.js"></script>
+    <!-- 부트스트랩 js 사용-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

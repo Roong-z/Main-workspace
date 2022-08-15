@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // toFixed = 반올림 해주는 문법
+        // 대신 문자로 전화해줌
+        // 문자로 전환하고 숫자를 붙이면 뒤에 1이 붙어버림 = 버그의 원인
+        // js + 연산자 특징 '문자'+123 => '문자123' / '문자'+'문자' => '문자문자'
+        // parseFloat / parselnt=> 다시 숫자로 변환해주는 문법
+        function vat(a){
+            var num = (a * 1.1).toFixed(1);
+            return parseFloat(num)
+        }
+        console.log(vat(55555));
+
+    </script>
+</body>
+</html>
