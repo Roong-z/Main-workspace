@@ -110,7 +110,7 @@
 
     <script>
 
-
+      // forEach 반복문
       const pants = [28,30,32,34];
       const shirts = [95,100,105,110];
       // $('#size').html(바지사이즈);
@@ -134,7 +134,22 @@
         }
       })
 
-      // script코드는 처음에 페이지를 로드할때 1번만 실행되기때문에 이벤트 리스터 써야함!!
+
+      // forIn 반복문
+      const obj = {name : 'jack', age : 29}
+      for (const key in obj){
+        // 오브젝트안의 값 출력
+        console.log(obj[key]);
+        // 오브젝트의 항목 출력(name,age)
+        console.log(key);
+      }
+
+
+
+
+
+
+      // script코드는 처음에 페이지를 로드할때 1번만 실행되기때문에 이벤트 리스너 써야함!!
       // let value = $('.form-select').eq(0).val();
       // if(value == '셔츠'){
       //   $('.form-select').eq(1).removeClass('form-hide');
