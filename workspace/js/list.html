@@ -13,34 +13,38 @@
   </head>
 
   <body>
-    <div class="card-group container">
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
+    <div class="container">
+      <div class="row">
+    
+          <div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
             <h5>Card title</h5>
             <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
           </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://via.placeholder.com/600">
-          <div class="card-body">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-            <button class="btn btn-danger">주문하기</button>
-          </div>
-        </div>
+    
       </div>
+    </div> 
       
       <script>
+
+        // ajax로 서버에서 데이터 받아오기
+        // $.get('https://codingapple1.github.io/price.json')
+        // .done(function(data){
+        //   console.log(data.price);})
+        // .fail(function(){
+        //   console.log('ajax failed')
+        // })
+
+        // fetch로 서버에서 데이터 받아오기
+        // fetch('https://codingapple1.github.io/price.json')
+        // .then(res=>res.json())
+        // .then(data=>{
+        //   console.log(data)
+        // })
+        // .catch(error=>{
+        //   console.log('ERROR')
+        // })
+
         var products = [
           { id : 0, price : 70000, title : 'Blossom Dress' },
           { id : 1, price : 50000, title : 'Springfield Shirt' },
