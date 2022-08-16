@@ -16,16 +16,30 @@
     <div class="container">
       <div class="row">
     
-          <div class="col-sm-4">
-            <img src="https://via.placeholder.com/600" class="w-100">
-            <h5>Card title</h5>
-            <p>가격 : 70000</p>
-          </div>
+
     
       </div>
     </div> 
       
       <script>
+        var products = [
+          { id : 0, price : 70000, title : 'Blossom Dress' },
+          { id : 1, price : 50000, title : 'Springfield Shirt' },
+          { id : 2, price : 60000, title : 'Black Monastery' }
+        ];
+
+        products.forEach(function(data){
+          console.log(data);
+          $('.row').append(
+          `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${data.title}</h5>
+            <p>가격 : ${data.price}</p>
+          </div>`
+        );
+        })
+        
+
 
         // ajax로 서버에서 데이터 받아오기
         // $.get('https://codingapple1.github.io/price.json')
@@ -44,18 +58,12 @@
         // .catch(error=>{
         //   console.log('ERROR')
         // })
-
-        var products = [
-          { id : 0, price : 70000, title : 'Blossom Dress' },
-          { id : 1, price : 50000, title : 'Springfield Shirt' },
-          { id : 2, price : 60000, title : 'Black Monastery' }
-        ];
      
         // for문으로 압축하기
-        for(let i = 0; i < 3; i++){
-            $('.card-body h5').eq(i).html(products[i].title);
-            $('.card-body p').eq(i).html('가격 : ' + products[i].price);
-        }
+        // for(let i = 0; i < 3; i++){
+        //     $('.card-body h5').eq(i).html(products[i].title);
+        //     $('.card-body p').eq(i).html('가격 : ' + products[i].price);
+        // }
 
         // $('.card-body h5').eq(0).html(products[0].title);
         // $('.card-body h5').eq(1).html(products[1].title);
