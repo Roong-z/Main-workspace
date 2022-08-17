@@ -15,6 +15,7 @@
   <body>
     <div class="container">
       <div class="row">
+        <span></span>
       </div>
     </div> 
 
@@ -58,6 +59,18 @@
         })
     })
   })
+  
+  // 버튼카운팅 시도1
+  let cnt = 0;
+        const button = document.getElementById("btn");
+        const span = document.querySelector("span");
+        function clickCounter(){
+            cnt+=1;
+            span.innerText = `Total Click: ${cnt}`;
+            console.log(cnt);
+        }
+        button.addEventListener("click",  clickCounter);
+
 
   $.get('https://codingapple1.github.io/js/more2.json')
     .done((data)=>{
