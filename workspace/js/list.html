@@ -11,19 +11,25 @@
       crossorigin="anonymous"
     />
     <!-- 내가 만든 css 연결 -->
-    <link href="/js/css/main.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
     <!-- 제이쿼리는 항상 헤드 부분에 넣기 -->
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-    <title>ajax마스터</title>
+    <title>리스트 더보기 정렬</title>
   </head>
 
   <body>
     <div class="container">
       <div class="row"></div>
+    </div>
+    <div class="container">
+      <button class="btn btn-danger" id="price">가격순정렬</button>
+      <button class="btn btn-danger" id="string">다나가순정렬</button>
+      <button class="btn btn-danger" id="sixUnder">6만원 이하 상품보기</button>
+      <button class="btn btn-danger" id="more">더보기</button>
     </div>
 
     <script>
@@ -33,6 +39,58 @@
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
 
+      // 문자 역순 정렬
+      $("#string").click(function () {
+        products.sort(function (a, b) {
+          if (a.title < b.title) {
+            return 1;
+          }
+          if (a.title == b.title) {
+            return 0;
+          } else {
+            return -1;
+          }
+        });
+        $(".row").html("");
+        products.forEach(function (data) {
+          let card = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${data.title}</h5>
+            <p>가격 : ${data.price}</p>
+          </div>`;
+          $(".row").append(card);
+        });
+      });
+
+      // 6만원 이하 상품보기
+      $("#sixUnder").click(function () {
+        let newProducts = products.filter((a) => a.price <= 60000);
+        $(".row").html("");
+        newProducts.forEach(function (data) {
+          let card = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${data.title}</h5>
+            <p>가격 : ${data.price}</p>
+          </div>`;
+          $(".row").append(card);
+        });
+      });
+
+      // 버튼 누르면 가격 낮은순 정렬
+      $("#price").click(function () {
+        products.sort((a, b) => a.price - b.price);
+        $(".row").html("");
+        products.forEach(function (data) {
+          let card = `<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${data.title}</h5>
+            <p>가격 : ${data.price}</p>
+          </div>`;
+          $(".row").append(card);
+        });
+      });
+
+      // 첫번째 상품리스트 출력
       products.forEach(function (data) {
         let card = `<div class="col-sm-4">
             <img src="https://via.placeholder.com/600" class="w-100">
@@ -41,13 +99,8 @@
           </div>`;
         $(".row").append(card);
       });
-    </script>
 
-    <div class="container">
-      <button class="btn btn-danger" id="more">더보기</button>
-    </div>
-
-    <script>
+      // 상품리스트 함수로 담기
       function newCard(data) {
         products.forEach(function (a, i) {
           let card = `<div class="col-sm-4">
@@ -59,6 +112,7 @@
         });
       }
 
+      //버튼 누를때마다 새로운 상품추가+3번째는 더보기 버튼 삭제
       let count = 0;
       $("#more").click(function () {
         count++;
@@ -69,8 +123,8 @@
             }
           );
         }
-        if (count > 2) {
-          alert("더이상 불러올 상품이 없습니다.");
+        if (count >= 2) {
+          $("#more").addClass("hidden");
         }
       });
     </script>
