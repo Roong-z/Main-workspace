@@ -36,18 +36,23 @@
         );
         })
 
+
+        
       </script> 
 
     <div class="container">
       <button class="btn btn-danger" id="more">더보기</button>
+      <p class="clickedCountText">
+  
+      </p>
     </div>
   <script>
 
-    $('#more').click(function(){
+
+    $('#more').click(function(){  
       $.get('https://codingapple1.github.io/js/more1.json')
         .done(function(data){
-        
-      data.forEach(function(data){
+        data.forEach(function(data){
           // console.log(data);
           $('.row').append(
           `<div class="col-sm-4">
@@ -60,16 +65,24 @@
     })
   })
   
-  // 버튼카운팅 시도1
-  let cnt = 0;
-        const button = document.getElementById("btn");
-        const span = document.querySelector("span");
-        function clickCounter(){
-            cnt+=1;
-            span.innerText = `Total Click: ${cnt}`;
-            console.log(cnt);
-        }
-        button.addEventListener("click",  clickCounter);
+
+//    class LikeCounter {
+//      constructor() {
+//     // 버튼 클릭 횟수
+//     this.clickedCount = 0;
+
+//     const button = document.querySelector('.btn');
+//     const clickedCountText = document.querySelector('.clickedCountText');
+
+//     // 화살표 함수로 이벤트 리스너 정의
+//     button.addEventListener('click', () => {
+//       this.clickedCount += 1;
+//       clickedCountText.textContent = this.clickedCount;
+//     });
+//   }
+// }
+
+// new LikeCounter();
 
 
   $.get('https://codingapple1.github.io/js/more2.json')
