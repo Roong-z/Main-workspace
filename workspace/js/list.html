@@ -96,8 +96,21 @@
             <img src="https://via.placeholder.com/600" class="w-100">
             <h5>${data.title}</h5>
             <p>가격 : ${data.price}</p>
+            <button class="buy">구매</button>
           </div>`;
         $(".row").append(card);
+      });
+
+      // 첫번째 상품리스트에서 구매버튼 누르면 로컬스토리지에 카트 항목으로 타이틀 담기게 하는 기능
+      $(".buy").click(function (e) {
+        const title = $(e.target).siblings("h5").text();
+        if (localStorage.getItem("cart") != null) {
+          const 카트출력 = JSON.parse(localStorage.getItem("cart"));
+          카트출력.push(title);
+          localStorage.setItem("cart", JSON.stringify(카트출력));
+        } else {
+          localStorage.setItem("cart", JSON.stringify([title]));
+        }
       });
 
       // 상품리스트 함수로 담기
