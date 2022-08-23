@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="quiz">
+      <h4>다음중 물에 빠지면 누구를 먼저 구하겠습니까?</h4>
+      <button>룽지</button>
+      <button>혜냥이</button>
+      <button>멍멍이</button>
+      <button>쥐</button>
+    </div>
+    <script>
+      //   if문 이랑 차이점은 switch 문법은 ()안에 변수를 딱 한개만 집어 넣을 수 있다.
+      //   break 없으면 다 출력함
+      document.querySelector("#quiz").addEventListener("click", function (e) {
+        switch (e.target.innerHTML) {
+          case "룽지":
+            alert("먀옹");
+            break;
+          case "혜냥이":
+            alert("혜용");
+            break;
+          case "멍멍이":
+            alert("웜웜");
+            break;
+          case "쥐":
+            alert("찍찍");
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>
